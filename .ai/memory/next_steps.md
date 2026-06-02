@@ -2,14 +2,17 @@
 
 # Immediate Tasks
 
-## Frontend Dashboard (Phase 5)
+## Frontend Dashboard & Feature Sub-Views (Phase 5)
 
-* [ ] Initialize Next.js project scaffold with TypeScript
-* [ ] Configure styling guidelines and Tailwind CSS design tokens
-* [ ] Implement secure login, registration, and session layouts
-* [ ] Construct interactive dashboard layout and responsive sidebar
-* [ ] Integrate API connection services using React Query or Axios
-* [ ] Create workflow automation and history review interface
+* [x] Initialize Next.js project scaffold with TypeScript
+* [x] Configure styling guidelines and Tailwind CSS v4 design tokens
+* [x] Implement secure login, registration, and session layouts
+* [x] Construct interactive dashboard layout and responsive sidebar
+* [x] Integrate API connection services using a typed, rotating apiClient
+* [x] Connect backend registration, login, and token refresh endpoints
+* [ ] Create AI Resume Optimization upload & STAR method suggested feedback page
+* [ ] Create Job Search Aggregator & semantic match relevance scoring list
+* [ ] Create Workflow Orchestrator status monitor & manual task dispatcher
 
 ---
 

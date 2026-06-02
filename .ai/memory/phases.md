@@ -28,13 +28,18 @@ Phase 5 — Frontend Dashboard
 * **Completed Work**: Standardized Redis connection pooling, set up Celery app with isolated named queues, implemented BaseWorkflowTask for automatic DLQ routing, designed workers (AI, scraping, notifications, and canvas workflows), and containerized worker processes.
 * **Key Files**: `app/core/redis.py`, `app/core/celery_app.py`, `app/tasks/ai.py`, `app/tasks/notifications.py`, `app/tasks/scraping.py`, `app/tasks/workflows.py`, `backend/Dockerfile`, `docker-compose.yml`, `tests/test_celery.py`
 
+## Phase 5 — Frontend Dashboard Scaffold & Auth UI
+* **Status**: COMPLETED
+* **Completed Work**: Scaffolded App Router Next.js with TypeScript and Tailwind CSS v4, built persistent Zustand auth store, secure token rotating apiRequest fetch client, auth services, glassmorphic login/register screens, responsive mobile-sliding Sidebar, Header top-bar, and Overview Dashboard metrics panel.
+* **Key Files**: `frontend/src/app/page.tsx`, `frontend/src/app/login/page.tsx`, `frontend/src/app/register/page.tsx`, `frontend/src/app/dashboard/layout.tsx`, `frontend/src/app/dashboard/page.tsx`, `frontend/src/components/dashboard/Sidebar.tsx`, `frontend/src/components/dashboard/Header.tsx`, `frontend/src/stores/authStore.ts`, `frontend/src/services/auth.service.ts`, `frontend/src/lib/apiClient.ts`
+
 ---
 
 # Upcoming Phases
 
-## Phase 5 — Frontend Dashboard
+## Phase 5 Continuation — Feature Sub-Views
 * **Status**: IN PROGRESS
-* **Current Goals**: Next.js scaffolding, TypeScript integrations, Tailwind design token setup, authentication layout pages, and workflow dashboard screens.
+* **Current Goals**: Build AI Resume upload optimize panels (`/dashboard/resumes`), job discovery match list grids (`/dashboard/jobs`), and Workflow worker monitor pipelines (`/dashboard/workflows`).
 
 ## Phase 6 — DevOps & Production Scaling
 * **Status**: PENDING

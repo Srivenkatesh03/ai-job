@@ -74,3 +74,18 @@
 ## Changed
 
 * expanded backend dependencies with `celery` and `redis` integrations
+
+---
+
+# v0.5.0 — Frontend Scaffold & Authentication UI
+
+## Added
+
+* initialized Next.js App Router project with TypeScript and Tailwind CSS v4 in the `frontend` folder
+* constructed Zustand persistent session authentication store (`frontend/src/stores/authStore.ts`)
+* implemented secure, rotating, typed API fetch client with automatic 401 token refresh (`frontend/src/lib/apiClient.ts`)
+* configured central Auth services connecting to registration, login, and profile REST endpoints (`frontend/src/services/auth.service.ts`)
+* designed premium glassmorphic authentication pages (`login` and `register` views) with floating glowing elements
+* created secure dashboard shell layout, responsive mobile-collapsible sliding Sidebar, and top Header status bar
+* built Overview Dashboard homepage displaying metrics cards, Celery queue execution logs, and manual action pipelines
+* verified production bundle compilation through successfully completed Turbo Next.js build

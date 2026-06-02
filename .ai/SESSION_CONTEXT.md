@@ -8,30 +8,31 @@ AI Job Automation Platform
 
 ## Current Architecture
 
-* FastAPI backend
+* FastAPI backend (async)
 * PostgreSQL
 * Redis
-* Celery
-* Next.js frontend
+* Celery (distributed queue workers)
+* Next.js App Router (TypeScript + Tailwind CSS v4)
 * Dockerized infrastructure
 
 ---
 
 ## Current Phase
 
-Backend foundation setup.
+Phase 5 — Frontend Dashboard.
 
 ---
 
 ## Active Priorities
 
-* clean architecture
-* async-first
-* modular services
-* production-ready code
+* strict modularity (UI / Services / Stores / Libs)
+* responsive-first design (Mobile Drawer overlays)
+* secure JWT session management & token rotation
+* typed, scalable API request structures
+* premium SaaS glassmorphic aesthetics
 
 ---
 
 ## Current Focus
 
-Authentication system implementation.
+Dashboard sub-views (Resume Optimization interface, Job Search panel, Workflow Orchestrator).

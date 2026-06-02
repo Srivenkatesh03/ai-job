@@ -52,13 +52,15 @@ Current stack:
 
 # Current Frontend Status
 
-Frontend not started yet.
+Base scaffold and authentication interface completed and fully compiled.
 
-Planned stack:
+Current stack:
 
-* Next.js
+* Next.js App Router
 * TypeScript
-* Tailwind CSS
+* Tailwind CSS v4
+* Zustand (persistent store)
+* Lucide React
 
 ---
 
@@ -76,16 +78,15 @@ Implemented:
 
 # Current Priority
 
-Set up Phase 5 — Frontend Dashboard (Next.js, Tailwind, component layouts, dashboard screens, and auth UI integration).
+Set up Phase 5 Feature Sub-Views (Resume Optimizer, Job Search, and Workflow Monitor panels).
 
 ---
 
 # Immediate Next Tasks
 
-1. Initialize Next.js frontend repository structure
-2. Configure Tailwind CSS and CSS styling system
-3. Set up frontend authentication integration
-4. Build Dashboard layout and Workflow interfaces
+1. Implement AI Resume Optimizer upload panel & STAR suggestion listing
+2. Implement Job search aggregator layout with semantic matching displays
+3. Implement Workflow monitoring panels with manual run/cancel triggers
 
 ---
 
