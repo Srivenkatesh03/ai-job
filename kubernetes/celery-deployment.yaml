@@ -1,0 +1,183 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-worker-ai
+  namespace: default
+  labels:
+    app: celery-worker-ai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery-worker-ai
+  template:
+    metadata:
+      labels:
+        app: celery-worker-ai
+    spec:
+      containers:
+        - name: celery-worker-ai
+          image: ai-job-backend:latest
+          command: ["celery", "-A", "app.core.celery_app", "worker", "-Q", "ai_tasks", "--loglevel=info", "--concurrency=2"]
+          env:
+            - name: DATABASE_URL
+              value: "postgresql+asyncpg://postgres:postgres@postgres:5432/ai_job"
+            - name: REDIS_URL
+              value: "redis://redis:6379/0"
+          resources:
+            limits:
+              cpu: "1.5"
+              memory: 1.5Gi
+            requests:
+              cpu: 750m
+              memory: 768Mi
+          livenessProbe:
+            exec:
+              command:
+                - celery
+                - -A
+                - app.core.celery_app
+                - inspect
+                - ping
+                - -d
+                - celery@%h
+            initialDelaySeconds: 15
+            periodSeconds: 20
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-worker-notifications
+  namespace: default
+  labels:
+    app: celery-worker-notifications
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery-worker-notifications
+  template:
+    metadata:
+      labels:
+        app: celery-worker-notifications
+    spec:
+      containers:
+        - name: celery-worker-notifications
+          image: ai-job-backend:latest
+          command: ["celery", "-A", "app.core.celery_app", "worker", "-Q", "notifications", "--loglevel=info", "--concurrency=4"]
+          env:
+            - name: DATABASE_URL
+              value: "postgresql+asyncpg://postgres:postgres@postgres:5432/ai_job"
+            - name: REDIS_URL
+              value: "redis://redis:6379/0"
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            exec:
+              command:
+                - celery
+                - -A
+                - app.core.celery_app
+                - inspect
+                - ping
+                - -d
+                - celery@%h
+            initialDelaySeconds: 15
+            periodSeconds: 20
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-worker-scraping
+  namespace: default
+  labels:
+    app: celery-worker-scraping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery-worker-scraping
+  template:
+    metadata:
+      labels:
+        app: celery-worker-scraping
+    spec:
+      containers:
+        - name: celery-worker-scraping
+          image: ai-job-backend:latest
+          command: ["celery", "-A", "app.core.celery_app", "worker", "-Q", "scraping", "--loglevel=info", "--concurrency=2"]
+          env:
+            - name: DATABASE_URL
+              value: "postgresql+asyncpg://postgres:postgres@postgres:5432/ai_job"
+            - name: REDIS_URL
+              value: "redis://redis:6379/0"
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            exec:
+              command:
+                - celery
+                - -A
+                - app.core.celery_app
+                - inspect
+                - ping
+                - -d
+                - celery@%h
+            initialDelaySeconds: 15
+            periodSeconds: 20
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-worker-workflows
+  namespace: default
+  labels:
+    app: celery-worker-workflows
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery-worker-workflows
+  template:
+    metadata:
+      labels:
+        app: celery-worker-workflows
+    spec:
+      containers:
+        - name: celery-worker-workflows
+          image: ai-job-backend:latest
+          command: ["celery", "-A", "app.core.celery_app", "worker", "-Q", "workflows", "--loglevel=info", "--concurrency=2"]
+          env:
+            - name: DATABASE_URL
+              value: "postgresql+asyncpg://postgres:postgres@postgres:5432/ai_job"
+            - name: REDIS_URL
+              value: "redis://redis:6379/0"
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            exec:
+              command:
+                - celery
+                - -A
+                - app.core.celery_app
+                - inspect
+                - ping
+                - -d
+                - celery@%h
+            initialDelaySeconds: 15
+            periodSeconds: 20
