@@ -2,35 +2,54 @@
 
 # Immediate Tasks
 
-## Backend Foundation
+## Frontend Dashboard (Phase 5)
 
-* create FastAPI app
-* create Dockerfile
-* create docker-compose.yml
-* setup PostgreSQL
-* setup Redis
-
----
-
-# Authentication
-
-* create User model
-* create JWT service
-* create auth middleware
-* create login/register endpoints
+* [ ] Initialize Next.js project scaffold with TypeScript
+* [ ] Configure styling guidelines and Tailwind CSS design tokens
+* [ ] Implement secure login, registration, and session layouts
+* [ ] Construct interactive dashboard layout and responsive sidebar
+* [ ] Integrate API connection services using React Query or Axios
+* [ ] Create workflow automation and history review interface
 
 ---
 
-# Queue System
+# Completed Tasks
 
-* setup Celery
-* setup Redis broker
-* create worker containers
+## Queue System & Workers (Phase 4)
+
+* [x] Setup Redis async connection factory
+* [x] Configure Celery integration and configuration
+* [x] Isolate domain queues (ai_tasks, scraping, notifications, workflows, analytics)
+* [x] Create celery worker Docker configurations (`backend/Dockerfile`)
+* [x] Implement idempotent task retries with exponential backoffs
+* [x] Configure dead-letter queues (DLQ) with automated fail-over push hooks
 
 ---
 
-# AI Layer
+## Backend Foundation (Phase 1)
 
-* create provider abstraction
-* create OpenAI provider
-* create Claude provider
+* [x] Create FastAPI app
+* [x] Create docker-compose.yml
+* [x] Setup PostgreSQL settings
+* [x] Setup Redis settings
+
+---
+
+## Authentication (Phase 2)
+
+* [x] Create User model
+* [x] Create JWT service and password hashing
+* [x] Create auth dependency & RBAC middleware
+* [x] Create login/register/refresh REST endpoints
+
+---
+
+## AI Layer (Phase 3)
+
+* [x] Create provider abstraction layer
+* [x] Create OpenAI provider HTTPX wrapper
+* [x] Create Claude provider HTTPX wrapper
+* [x] Create Gemini provider HTTPX wrapper
+* [x] Create Ollama provider HTTPX wrapper
+* [x] Create dynamic failover / fallback factory
+* [x] Create central YAML prompt template registry and manager

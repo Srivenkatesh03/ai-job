@@ -12,26 +12,41 @@ AI Job Automation Platform
 
 The project currently contains:
 
-* architecture documentation
-* backend planning
-* workflow planning
-* queue architecture
-* Docker planning
-* observability planning
+* Production-grade backend architecture
+* central settings via `pydantic-settings`
+* dialect-agnostic PostgreSQL/SQLite `User` database model
+* JWT token creation, validation, and token rotation services
+* Bearer header token validation dependencies and RBAC middleware
+* REST endpoints for registration, login, refresh, profile, and admin screens
+* structured, generic response/error schemas matching specifications
+* abstract BaseProvider defining generation, streaming, and embeddings contracts
+* direct HTTP integration wrappers for OpenAI, Claude, Gemini, and Ollama
+* automatic model-to-model failover/fallback factory orchestrator
+* central YAML-based Prompt Template Registry and parsing utilities
+* central async Redis connection pooling and client session manager dependency
+* production-ready Celery background worker setup with isolated domain queues
+* custom BaseWorkflowTask automating dead-letter queue (DLQ) routing on final failure
+* multi-step eager execution workflow pipeline using Celery canvas chain coordination
+* production-grade multi-stage Docker build pipeline configuration
+* comprehensive 25-test suite running standalone on async SQLite (incorporating eager Celery task execution)
 
 ---
 
 # Current Backend Status
 
-Backend foundation is being implemented.
+Phase 2 (Authentication & RBAC), Phase 3 (AI Layer Abstraction & Prompt Registry), and Phase 4 (Workflow Engine & Queue System) are completed and fully tested.
 
 Current stack:
 
-* FastAPI
-* PostgreSQL
-* Redis
-* Celery
-* Docker
+* FastAPI (async)
+* SQLAlchemy (asyncpg)
+* SQLite (aiosqlite for tests)
+* python-jose (JWT)
+* passlib / bcrypt (password hashing)
+* httpx (direct async AI endpoint requests)
+* PyYAML (prompt template management)
+* Celery (asynchronous distributed workers)
+* Redis (message broker and caching)
 
 ---
 
@@ -49,33 +64,28 @@ Planned stack:
 
 # Current Infrastructure Status
 
-Infrastructure currently planned but not fully implemented.
+Local database, cache dependencies, API backend, and isolated worker processes are standardized using docker-compose.
 
-Planned services:
+Implemented:
 
-* backend
-* frontend
-* PostgreSQL
-* Redis
-* Celery workers
-* nginx
-* n8n
+* docker-compose.yml (PostgreSQL 15, Redis 7, FastAPI Backend, 4 isolated Celery workers)
+* .env environment variables template files
+* backend/Dockerfile (production-ready multi-stage Python builder/runtime stages)
 
 ---
 
 # Current Priority
 
-Complete backend foundation and authentication system.
+Set up Phase 5 — Frontend Dashboard (Next.js, Tailwind, component layouts, dashboard screens, and auth UI integration).
 
 ---
 
 # Immediate Next Tasks
 
-1. FastAPI app setup
-2. Docker setup
-3. PostgreSQL integration
-4. Redis integration
-5. JWT authentication
+1. Initialize Next.js frontend repository structure
+2. Configure Tailwind CSS and CSS styling system
+3. Set up frontend authentication integration
+4. Build Dashboard layout and Workflow interfaces
 
 ---
 

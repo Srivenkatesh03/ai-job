@@ -21,11 +21,8 @@
 ## Added
 
 * FastAPI application setup
-* Docker backend container
 * environment configuration
 * health endpoints
-
----
 
 ## Changed
 
@@ -34,8 +31,46 @@
 
 ---
 
+# v0.3.0 — Authentication & AI Layer Integration
+
+## Added
+
+* central database models with async `User` schema
+* secure password hashing using `passlib[bcrypt]`
+* stateless JWT token services (access, refresh, rotation)
+* Bearer authentication header extractors and RBAC check middleware
+* standard success/error wrappers conforming to REST payloads
+* abstract AI provider interfaces and direct HTTPX async wrappers
+* Google Gemini 1.5 and local Ollama integrations
+* dynamic error failover / fallback factory runner
+* central YAML prompt registry file and template parser
+* automatic text embedding fallbacks (Anthropic delegating to OpenAI)
+* docker-compose setup and .env templates
+* 17-test suite verifying auth and AI components via memory SQLite
+
 ## Pending
 
-* authentication
 * Celery integration
-* PostgreSQL migrations
+* Alembic migrations
+* frontend dashboard
+
+---
+
+# v0.4.0 — Workflow Engine & Queue System
+
+## Added
+
+* central async Redis connection pooling and client session manager dependency (`app/core/redis.py`)
+* production-ready Celery initialization and configuration (`app/core/celery_app.py`)
+* isolated domain-specific named queues (`ai_tasks`, `notifications`, `scraping`, `workflows`, `analytics`)
+* dynamic routing rules separating execution pathways
+* custom `BaseWorkflowTask` subclass automating dead-letter queue (DLQ) serialization on final failure
+* domain background workers for AI, notifications, scraping, and coordinated pipelines (`app/tasks/`)
+* multi-step workflow pipelines using Celery canvas chain coordination
+* production-grade multi-stage Docker build pipeline configuration (`backend/Dockerfile`)
+* isolated worker service configurations in `docker-compose.yml`
+* comprehensive 8-test suite covering dynamic retries, DLQ routing, eagerly executed canvas chains, and async runners
+
+## Changed
+
+* expanded backend dependencies with `celery` and `redis` integrations
