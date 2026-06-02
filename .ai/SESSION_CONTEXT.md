@@ -14,25 +14,26 @@ AI Job Automation Platform
 * Celery (distributed queue workers)
 * Next.js App Router (TypeScript + Tailwind CSS v4)
 * Dockerized infrastructure
+* Multi-provider fallback AI abstraction
 
 ---
 
 ## Current Phase
 
-Phase 5 — Frontend Dashboard.
+Phase 6 — DevOps & Production Scaling.
 
 ---
 
 ## Active Priorities
 
-* strict modularity (UI / Services / Stores / Libs)
-* responsive-first design (Mobile Drawer overlays)
-* secure JWT session management & token rotation
-* typed, scalable API request structures
-* premium SaaS glassmorphic aesthetics
+* structured observability (Loki / Prometheus / Grafana / OpenTelemetry)
+* Flower queues monitor integration
+* CI/CD build workflows
+* Kubernetes scaling bounds and readiness probes
+* Docker-compose standardization
 
 ---
 
 ## Current Focus
 
-Dashboard sub-views (Resume Optimization interface, Job Search panel, Workflow Orchestrator).
+DevOps monitoring configurations and deployment pipelines setup.

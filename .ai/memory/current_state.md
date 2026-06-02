@@ -13,22 +13,32 @@ AI Job Automation Platform
 The project currently contains:
 
 * Production-grade backend architecture
-* central settings via `pydantic-settings`
-* dialect-agnostic PostgreSQL/SQLite `User` database model
+* Central settings via `pydantic-settings`
+* Dialect-agnostic PostgreSQL/SQLite `User` database model
 * JWT token creation, validation, and token rotation services
 * Bearer header token validation dependencies and RBAC middleware
 * REST endpoints for registration, login, refresh, profile, and admin screens
-* structured, generic response/error schemas matching specifications
-* abstract BaseProvider defining generation, streaming, and embeddings contracts
-* direct HTTP integration wrappers for OpenAI, Claude, Gemini, and Ollama
-* automatic model-to-model failover/fallback factory orchestrator
-* central YAML-based Prompt Template Registry and parsing utilities
-* central async Redis connection pooling and client session manager dependency
-* production-ready Celery background worker setup with isolated domain queues
-* custom BaseWorkflowTask automating dead-letter queue (DLQ) routing on final failure
-* multi-step eager execution workflow pipeline using Celery canvas chain coordination
-* production-grade multi-stage Docker build pipeline configuration
-* comprehensive 25-test suite running standalone on async SQLite (incorporating eager Celery task execution)
+* Structured, generic response/error schemas matching specifications
+* Abstract BaseProvider defining generation, streaming, and embeddings contracts
+* Direct HTTP integration wrappers for OpenAI, Claude, Gemini, and Ollama
+* Automatic model-to-model failover/fallback factory orchestrator
+* Central YAML-based Prompt Template Registry and parsing utilities
+* Central async Redis connection pooling and client session manager dependency
+* Production-ready Celery background worker setup with isolated domain queues
+* Custom BaseWorkflowTask automating dead-letter queue (DLQ) routing on final failure
+* Multi-step eager execution workflow pipeline using Celery canvas chain coordination
+* Production-grade multi-stage Docker build pipeline configuration
+* App Router Next.js with TypeScript and Tailwind CSS v4 in the `frontend` folder
+* Zustand persistent session authentication store (`frontend/src/stores/authStore.ts`)
+* Secure, rotating, typed API fetch client with automatic 401 token refresh (`frontend/src/lib/apiClient.ts`)
+* Typed services layers connecting auth, resumes, jobs, and workflows endpoints
+* Premium glassmorphic authentication pages (`login` and `register` views) with floating glowing elements
+* Secure dashboard shell layout, responsive mobile-collapsible sliding Sidebar, and top Header status bar
+* Overview Dashboard homepage displaying metrics cards, Celery queue execution logs, and manual action pipelines
+* AI Resume Optimizer drag-and-drop file uploader, progress loaders, and circular ATS relevance rating scoreboards
+* Job Search Aggregator keyword/location queries, remote checklists, matched/gaps skill lists, and custom AI cover letter generators
+* Workflows status panel, Celery queues loads, and dead-letter stack-trace forensics inspection databases
+* Comprehensive 25-test suite running standalone on async SQLite (incorporating eager Celery task execution)
 
 ---
 
@@ -52,57 +62,37 @@ Current stack:
 
 # Current Frontend Status
 
-Base scaffold and authentication interface completed and fully compiled.
+Scaffold, authentication UI, and all feature sub-views are completed, type-checked, compiled, and statically built successfully.
 
 Current stack:
 
-* Next.js App Router
-* TypeScript
-* Tailwind CSS v4
+* Next.js App Router (TypeScript + Tailwind CSS v4)
 * Zustand (persistent store)
 * Lucide React
 
 ---
 
-# Current Infrastructure Status
+## Current Infrastructure Status
 
-Local database, cache dependencies, API backend, and isolated worker processes are standardized using docker-compose.
+Local database, cache dependencies, API backend, isolated worker processes, and full observability platforms are standardized using docker-compose and Kubernetes manifests.
 
 Implemented:
 
-* docker-compose.yml (PostgreSQL 15, Redis 7, FastAPI Backend, 4 isolated Celery workers)
-* .env environment variables template files
-* backend/Dockerfile (production-ready multi-stage Python builder/runtime stages)
+* `docker-compose.yml` (PostgreSQL 15, Redis 7, FastAPI Backend, 4 isolated Celery workers, Flower monitor, Prometheus scraper, Grafana dashboards, Loki, and Promtail)
+* `.env` environment variables template files
+* `backend/Dockerfile` (production-ready multi-stage Python builder/runtime stages)
+* `kubernetes/` folder (standardized production manifests for postgres database StatefulSet, redis cache, backend deployment, celery workers deployment, HPA scaling boundary, services and ready/live probes)
 
 ---
 
-# Current Priority
+## Current Priority
 
-Set up Phase 5 Feature Sub-Views (Resume Optimizer, Job Search, and Workflow Monitor panels).
-
----
-
-# Immediate Next Tasks
-
-1. Implement AI Resume Optimizer upload panel & STAR suggestion listing
-2. Implement Job search aggregator layout with semantic matching displays
-3. Implement Workflow monitoring panels with manual run/cancel triggers
+All development and DevOps phases are successfully completed. The system is fully ready for local testing and production deployment.
 
 ---
 
-# Important Constraints
+## Immediate Next Tasks
 
-* async-first architecture
-* modular services
-* provider-independent AI
-* event-driven workflows
-* production-ready structure
-
----
-
-# Important Rules
-
-* no business logic in routes
-* no hardcoded secrets
-* queues must remain isolated
-* workflows must remain observable
+1. Deploy the stack to Kubernetes cluster or run locally with Docker Compose to monitor operations.
+2. Conduct load tests to verify HPA (HorizontalPodAutoscaler) thresholds and trigger pod scale-outs.
+3. Review auto-provisioned Grafana metrics dashboard and Loki logging streams under live workflows.

@@ -2,46 +2,47 @@
 
 ## Current Goal
 
-Implement Phase 5 — Frontend Dashboard.
+Implement Phase 5 — Frontend Dashboard Feature Sub-Views.
 
 ---
 
 ## Scope
 
-* Scaffold Next.js App Router + TypeScript + Tailwind CSS v4 monorepo layout.
-* Setup Zustand persistent browser session Auth Store (`src/stores/authStore.ts`).
-* Implement typed, auto-retry token rotating API request client (`src/lib/apiClient.ts`).
-* Build secure, interactive auth service layers (`src/services/auth.service.ts`).
-* Design gorgeous glassmorphic premium Authentication screens:
-  * Login screen (`src/app/login/page.tsx`) with floating glow elements.
-  * Registration screen (`src/app/register/page.tsx`) with sliding warnings and checkmarks.
-* Design responsive, protected Layout Shell (`src/app/dashboard/layout.tsx`).
-* Construct collapsible responsive navigation drawer (`src/components/dashboard/Sidebar.tsx`).
-* Form top bar header displaying dynamic route titles and health indicators (`src/components/dashboard/Header.tsx`).
-* Establish home Overview metric dashboards (`src/app/dashboard/page.tsx`).
-* Connect login/register/refresh endpoints directly to backend REST contracts.
+* Build dynamic Resume Optimizer upload and review panels (`src/app/dashboard/resumes/page.tsx`):
+  * Drag-and-drop PDF/DOCX file uploader with max 10MB bounds.
+  * AI suggestions parsing list.
+  * Score dashboard progress meter.
+* Build Job Search Match Grid list panels (`src/app/dashboard/jobs/page.tsx`):
+  * Filter query strings by title keyword, locations, remote options.
+  * Semantic match score indicators (HSL tailored color bands).
+  * Skill lists matched vs gaps.
+  * Modal dialog generating live customized cover letters using AI fallback pipelines.
+* Build Workflow Orchestrator status monitor panel (`src/app/dashboard/workflows/page.tsx`):
+  * Celery background queue lists (`ai_tasks`, `notifications`, `scraping`, `workflows`).
+  * Real-time task execution records and error-catcher details.
+  * Expander lists showing forensically caught tracebacks from the dead-letter queue (DLQ).
+  * Replay button triggers to re-queue failures eagerly.
+* Setup typed endpoints services layers:
+  * `src/services/resume.service.ts`
+  * `src/services/job.service.ts`
+  * `src/services/workflow.service.ts`
 
 ---
 
 ## Relevant Files
 
 ```plaintext
-frontend/src/app/layout.tsx
-frontend/src/app/page.tsx
-frontend/src/app/login/page.tsx
-frontend/src/app/register/page.tsx
-frontend/src/app/dashboard/layout.tsx
-frontend/src/app/dashboard/page.tsx
-frontend/src/components/dashboard/Sidebar.tsx
-frontend/src/components/dashboard/Header.tsx
-frontend/src/stores/authStore.ts
-frontend/src/services/auth.service.ts
-frontend/src/lib/apiClient.ts
+frontend/src/app/dashboard/resumes/page.tsx
+frontend/src/app/dashboard/jobs/page.tsx
+frontend/src/app/dashboard/workflows/page.tsx
+frontend/src/services/resume.service.ts
+frontend/src/services/job.service.ts
+frontend/src/services/workflow.service.ts
 ```
 
 ---
 
 ## Current Status
 
-**COMPLETED**: All scaffolding, API client structures, secure authentication pages, dashboard layout shells, responsive sidebar/header units, and overview dashboards have been successfully developed, type-checked, compiled, and statically built with 100% correct TypeScript typing.
-**NEXT**: Create secondary dashboard sub-views for Resumes optimization, Job aggregates search, and Workflows engine monitoring.
+**COMPLETED**: All features sub-views, API endpoints services, and modal/drawer panels have been fully designed, implemented, compiled, and statically built with Next.js Turbopack, satisfying all product and technical guidelines.
+**NEXT**: Set up Phase 6 — DevOps & Production Scaling (monitoring Flower/Prometheus/Grafana, CI/CD pipelines, scaling boundaries).

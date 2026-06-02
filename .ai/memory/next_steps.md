@@ -2,6 +2,17 @@
 
 # Immediate Tasks
 
+## DevOps & Production Scaling (Phase 6)
+
+* [x] Configure structured logging and metrics pipelines (Prometheus, Grafana, Loki)
+* [x] Integrate Flower tasks queue monitor panel
+* [x] Design GitHub Actions CI/CD workflows for automated build checks
+* [x] Setup Kubernetes deployment plans, scaling thresholds, and readiness probes
+
+---
+
+# Completed Tasks
+
 ## Frontend Dashboard & Feature Sub-Views (Phase 5)
 
 * [x] Initialize Next.js project scaffold with TypeScript
@@ -10,13 +21,11 @@
 * [x] Construct interactive dashboard layout and responsive sidebar
 * [x] Integrate API connection services using a typed, rotating apiClient
 * [x] Connect backend registration, login, and token refresh endpoints
-* [ ] Create AI Resume Optimization upload & STAR method suggested feedback page
-* [ ] Create Job Search Aggregator & semantic match relevance scoring list
-* [ ] Create Workflow Orchestrator status monitor & manual task dispatcher
+* [x] Create AI Resume Optimization upload & STAR method suggested feedback page
+* [x] Create Job Search Aggregator & semantic match relevance scoring list
+* [x] Create Workflow Orchestrator status monitor & manual task dispatcher
 
 ---
-
-# Completed Tasks
 
 ## Queue System & Workers (Phase 4)
 

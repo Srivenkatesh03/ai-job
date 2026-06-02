@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY requirements.txt .
 
-# Install dependencies to a local folder
-RUN pip install --no-cache-dir --user -r requirements.txt
+# Install dependencies globally
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Stage 2: Runtime stage
 FROM python:3.11-slim AS runtime
@@ -19,8 +19,7 @@ FROM python:3.11-slim AS runtime
 WORKDIR /workspace
 
 # Copy installed dependencies from builder
-COPY --from=builder /root/.local /root/.local
-ENV PATH=/root/.local/bin:$PATH
+COPY --from=builder /usr/local /usr/local
 
 # Create non-root user for security compliance
 RUN groupadd -g 1000 appgroup && \

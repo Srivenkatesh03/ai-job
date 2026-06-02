@@ -89,3 +89,20 @@
 * created secure dashboard shell layout, responsive mobile-collapsible sliding Sidebar, and top Header status bar
 * built Overview Dashboard homepage displaying metrics cards, Celery queue execution logs, and manual action pipelines
 * verified production bundle compilation through successfully completed Turbo Next.js build
+
+---
+
+# v0.6.0 — DevOps & Production Scaling (Phase 6 Complete)
+
+## Added
+
+* instrumented FastAPI backend with real-time Prometheus client telemetry middleware (`backend/app/main.py`) exposing request statistics and duration latency histograms on `/metrics`
+* configured Prometheus log scraper (`docker/prometheus/prometheus.yml`) targeting backend port 8000
+* created centralized Loki logging pipeline configuration (`docker/loki/loki-config.yml`) for robust container log aggregation
+* designed Promtail log scraper agent config (`docker/promtail/promtail-config.yml`) mounting container paths to aggregate and forward Docker logs
+* created Grafana datasource auto-provisioning configs (`docker/grafana/provisioning/datasources/datasources.yml`) registering Prometheus and Loki on boot
+* created Grafana dashboard auto-provisioning mapping (`docker/grafana/provisioning/dashboards/dashboards.yml`)
+* designed pre-built glassmorphic Observability Dashboard template JSON (`docker/grafana/provisioning/dashboards/dashboard.json`) rendering API requests count, p95 latencies, and real-time Loki logging streams
+* integrated Flower celery task queue dashboard and full Observability suite (Prometheus, Loki, Promtail, Grafana) inside `docker-compose.yml`
+* designed production-grade Kubernetes HorizontalPodAutoscaler (HPA) manifest (`kubernetes/hpa.yaml`) configuring horizontal auto-scaling thresholds under load
+* verified backend telemetry compiling and passing 100% of the 25-test suite flawlessly
